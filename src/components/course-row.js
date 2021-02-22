@@ -1,17 +1,62 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 
-const CourseRow = ({title, owner, lastModified}) =>
-    <tr>
-      <td>
-        <Link to="/editor">
-          <i className="fas fa-file"> </i>
-           &nbsp; {title}
-        </Link>
-      </td>
-      <td>{owner}</td>
-      <td>{lastModified}</td>
-      <td><i className="far fa-edit float-right"></i></td>
-    </tr>
+const CourseRow = ({course, owner, lastModified, deleteCourse,
+  updateCourse}) => {
+  const [editing, setEditing] = useState(false)
+  const [title, setTitle] = useState(course.title)
+
+  const saveCourse = () => {
+    setEditing(false)
+    const newCourse = {
+      ...course,
+      title: title
+    }
+    updateCourse(newCourse)
+  }
+
+  return (
+      <tr>
+        <td>
+
+          {
+            !editing &&
+            <Link to="/editor">
+              <i className="fas fa-file">&nbsp; </i>
+              {course.title}
+            </Link>
+          }
+          {
+            editing &&
+            <input
+                className="form-control"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}/>
+          }
+        </td>
+        <td>{owner}</td>
+        <td>{lastModified}</td>
+        <td>
+          <div className="float-right">
+            <i onClick={() => deleteCourse(course)} className="fas fa-trash">&nbsp;</i>
+            {/*<i onClick={() => setEditing((prevEditing) => !prevEditing)} className="fas fa-edit"></i>*/}
+
+            {
+              editing &&
+              <i onClick={() => deleteCourse(course)} className="fas fa-trash">&nbsp;</i> &&
+              <i onClick={() => saveCourse()} className="fas fa-check"></i>
+            }
+
+            {
+              !editing &&
+              <i onClick={() => setEditing(true)} className="far fa-edit"></i>
+            }
+          </div>
+
+        </td>
+      </tr>
+  )
+}
+
 
 export default CourseRow
