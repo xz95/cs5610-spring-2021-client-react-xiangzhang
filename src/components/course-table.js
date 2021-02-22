@@ -1,33 +1,24 @@
 import React from 'react'
 import CourseRow from "./course-row";
+import {Link} from "react-router-dom";
 
 
 export default class CourseTable extends React.Component {
-  state = {
-    courses: [
-      {title: "CS5610", owner: "Jannunzi", lastModified: "1/25/2021 - 10:55 PM"},
-      {title: "CS5800", owner: "Sun", lastModified: "1/26/2021 - 11:55 AM"},
-      {title: "CS5520", owner: "Daniel", lastModified: "2/25/2021 - 9:55 PM"},
-      {title: "CS5010", owner: "Byran", lastModified: "2/25/2021 - 3:55 AM"}
-    ]
-
+  constructor(props) {
+    super(props);
   }
 
-  addCourse = () => {
-    const newCourse = {
-      title: "New Course",
-      owner: "Me",
-      lastModified: "2/25/2021 - 3:55 AM"
-    }
-    this.state.courses.push(newCourse)
-    this.setState(this.state)
-  }
+
 
   render() {
     return (
         <div>
           <h2>Course Table</h2>
-          <button onClick={this.addCourse}>Add Course</button>
+          <Link to="/courses/grid">
+            <i className="fas fa-table float-right"></i>
+          </Link>
+
+
           <table className="table table-striped">
             <thead>
             <tr>
@@ -56,7 +47,7 @@ export default class CourseTable extends React.Component {
             {/*<CourseRow title={"CS5610"} owner={"Jose"}/>*/}
             {/*<CourseRow title={"CS5520"} owner={"Dan"}/>*/}
             {
-              this.state.courses.map(course =>
+              this.props.courses.map(course =>
                 <CourseRow
                   title={course.title}
                   owner={course.owner}

@@ -1,12 +1,13 @@
 import React from 'react'
+import {Link} from "react-router-dom";
 
 const CourseRow = ({title, owner, lastModified}) =>
     <tr>
       <td>
-        <a href="">
+        <Link to="/editor">
           <i className="fas fa-file"> </i>
            &nbsp; {title}
-        </a>
+        </Link>
       </td>
       <td>{owner}</td>
       <td>{lastModified}</td>
