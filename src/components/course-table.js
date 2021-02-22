@@ -1,10 +1,33 @@
 import React from 'react'
+import CourseRow from "./course-row";
+
 
 export default class CourseTable extends React.Component {
+  state = {
+    courses: [
+      {title: "CS5610", owner: "Jannunzi", lastModified: "1/25/2021 - 10:55 PM"},
+      {title: "CS5800", owner: "Sun", lastModified: "1/26/2021 - 11:55 AM"},
+      {title: "CS5520", owner: "Daniel", lastModified: "2/25/2021 - 9:55 PM"},
+      {title: "CS5010", owner: "Byran", lastModified: "2/25/2021 - 3:55 AM"}
+    ]
+
+  }
+
+  addCourse = () => {
+    const newCourse = {
+      title: "New Course",
+      owner: "Me",
+      lastModified: "2/25/2021 - 3:55 AM"
+    }
+    this.state.courses.push(newCourse)
+    this.setState(this.state)
+  }
+
   render() {
     return (
         <div>
           <h2>Course Table</h2>
+          <button onClick={this.addCourse}>Add Course</button>
           <table className="table table-striped">
             <thead>
             <tr>
@@ -18,56 +41,30 @@ export default class CourseTable extends React.Component {
                 </select>
               </th>
               <th>Last modified by me</th>
-              <th><i className="fas fa-th"></i> <i
-                  className="fas fa-language"></i></th>
+              <th>
+                <div className="float-right">
+                  <i className="fas fa-folder"></i> &nbsp;
+                  <i className="fas fa-sort-alpha-up-alt"></i> &nbsp;
+                  <i className="fas fa-th"></i>
+                </div>
+
+              </th>
 
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>
-                <a href="">
-                  <i className="fas fa-file"> </i>
-                  CS5610
-                </a>
-              </td>
-              <td>Jannunzi</td>
-              <td>1/25/2021 - 10:55 PM</td>
-              <td><i className="far fa-edit float-right"></i></td>
-            </tr>
-            <tr>
-              <td>
-                <a href="">
-                  <i className="fas fa-file"></i>
-                  CS5800
-                </a>
-              </td>
-              <td>Zhifeng Sun</td>
-              <td>1/25/2021 - 10:55 PM</td>
-              <td><i className="far fa-edit float-right"></i></td>
-            </tr>
-            <tr>
-              <td>
-                <a href="">
-                  <i className="fas fa-file"></i>
-                  CS5010
-                </a>
-              </td>
-              <td>Brain, Mark, Alex</td>
-              <td>1/25/2021 - 10:55 PM</td>
-              <td><i className="far fa-edit float-right"></i></td>
-            </tr>
-            <tr>
-              <td>
-                <a href="">
-                  <i className="fas fa-file"></i>
-                  CS5520
-                </a>
-              </td>
-              <td>Daniel</td>
-              <td>1/25/2021 - 10:55 PM</td>
-              <td><i className="far fa-edit float-right"></i></td>
-            </tr>
+            {/*<CourseRow title={"CS5610"} owner={"Jose"}/>*/}
+            {/*<CourseRow title={"CS5520"} owner={"Dan"}/>*/}
+            {
+              this.state.courses.map(course =>
+                <CourseRow
+                  title={course.title}
+                  owner={course.owner}
+                  lastModified={course.lastModified}
+                />
+              )
+            }
+
             </tbody>
           </table>
         </div>
