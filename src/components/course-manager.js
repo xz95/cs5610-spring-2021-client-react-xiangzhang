@@ -1,6 +1,7 @@
 import React from 'react'
 import CourseTable from "./course-table";
 import CourseGrid from "./course-grid";
+import CourseEditor from "./course-editor";
 import {Route} from "react-router-dom";
 
 import courseService, {findAllCourses, deleteCourse} from "../services/course-service";
@@ -66,12 +67,27 @@ export default class CourseManager extends React.Component {
 
   render() {
     return(
-        <div>
-          <h1>Course Manager</h1>
-          <button onClick={this.addCourse}>Add Course</button>
+      <div>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="">Course Manager</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-          {/*<Route path="/courses/grid" component={CourseGrid}/>*/}
-          {/*<Route path="/courses/table" component={CourseTable}/>*/}
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+           <div className="col-7">
+
+            </div>
+            <div className="col-4">
+              <input className="form-control" placeholder="Search"/>
+            </div>
+            <div className="col-1 float-right">
+              <i className="fas fa-plus-circle fa-2x" onClick={this.addCourse}></i>
+            </div>
+          </div>
+        </nav>
+
+        <div className="container mt-5">
 
           <Route path="/courses/table" exact={true} >
             <CourseTable
@@ -86,7 +102,9 @@ export default class CourseManager extends React.Component {
           {/*<CourseTable/>*/}
           {/*<CourseGrid/>*/}
         </div>
+      </div>
 
     )
   }
 }
+

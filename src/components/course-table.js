@@ -12,11 +12,25 @@ export default class CourseTable extends React.Component {
 
   render() {
     return (
-        <div>
-          <h2>Course Table</h2>
-          <Link to="/courses/grid">
-            <i className="fas fa-2x fa-table float-right"></i>
-          </Link>
+        <div  class="container mt-5">
+
+          {/*<div className="row">*/}
+            <div>
+              <h2>Course Table</h2>
+            </div>
+          {/*  <div className="col-7">*/}
+          {/*    <input className="form-control" placeholder="Search"/>*/}
+          {/*  </div>*/}
+          {/*  <div className="col-1">*/}
+          {/*    <i className="fas fa-plus-circle fa-2x float-right"></i>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
+
+
+          {/*<Link to="/courses/grid">*/}
+          {/*  */}
+          {/*  <i className="fas fa-th fa-2x float-right"></i>*/}
+          {/*</Link>*/}
 
 
           <table className="table table-striped">
@@ -36,7 +50,10 @@ export default class CourseTable extends React.Component {
                 <div className="float-right">
                   <i className="fas fa-folder"></i> &nbsp;
                   <i className="fas fa-sort-alpha-up-alt"></i> &nbsp;
-                  <i className="fas fa-th"></i>
+                  <Link to="/courses/grid">
+                    {/*<i className="fas fa-2x fa-table float-right"></i>*/}
+                    <i className="fas fa-th"></i>
+                  </Link>
                 </div>
 
               </th>
