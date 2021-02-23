@@ -8,8 +8,6 @@ export default class CourseTable extends React.Component {
     super(props);
   }
 
-
-
   render() {
     return (
         <div  class="container mt-5">

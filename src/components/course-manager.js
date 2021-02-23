@@ -1,6 +1,7 @@
 import React from 'react'
 import CourseTable from "./course-table";
 import CourseGrid from "./course-grid";
+import './course-manager.css'
 import CourseEditor from "./course-editor";
 import {Route} from "react-router-dom";
 
@@ -45,7 +46,6 @@ export default class CourseManager extends React.Component {
     })
   }
 
-
   addCourse = () => {
     const newCourse = {
       title: "New Course",
@@ -64,6 +64,7 @@ export default class CourseManager extends React.Component {
     .then(courses => this.setState({courses}))
     // .then(courses => this.setState({courses: courses}))
   }
+
 
   render() {
     return(
@@ -97,12 +98,23 @@ export default class CourseManager extends React.Component {
           </Route>
 
           <Route path="/courses/grid">
-            <CourseGrid courses={this.state.courses}/>
+            <CourseGrid
+                updateCourse={this.updateCourse}
+                deleteCourse={this.deleteCourse}
+                courses={this.state.courses}/>
           </Route>
           {/*<CourseTable/>*/}
           {/*<CourseGrid/>*/}
+
         </div>
+        <i className="fas fa-plus-circle fa-3x" id = "cornerPlus" onClick={this.addCourse}></i>
+
+        <div className="col-1 float-right" >
+
+        </div>
+
       </div>
+
 
     )
   }
