@@ -89,9 +89,9 @@ const CourseEditor = ({history}) =>
           </div>
           <br/>
           <h3>
-            <Link to="/courses">
-              <i className="fas fa-arrow-left"></i>
-            </Link>
+            {/*<Link to="/courses">*/}
+            {/*  <i className="fas fa-arrow-left"></i>*/}
+            {/*</Link>*/}
 
             <span onClick={() => history.goBack()}> Go Back </span>
 

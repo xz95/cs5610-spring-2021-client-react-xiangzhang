@@ -109,10 +109,6 @@ export default class CourseManager extends React.Component {
         </div>
         <i className="fas fa-plus-circle fa-3x" id = "cornerPlus" onClick={this.addCourse}></i>
 
-        <div className="col-1 float-right" >
-
-        </div>
-
       </div>
 
 
