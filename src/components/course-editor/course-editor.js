@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-
+import moduleReducer from "../../reducers/module-reducer";
+import lessonReducer from "../../reducers/lesson-reducer";
 
 const CourseEditor = ({history}) =>
     <div>
