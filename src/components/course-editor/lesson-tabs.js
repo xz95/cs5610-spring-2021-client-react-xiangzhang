@@ -5,7 +5,9 @@ import {useParams} from "react-router-dom";
 
 const LessonTabs = (
     {
-      lessons=[]
+      lessons=[],
+      createLesson
+
     }) => {
   const {layout, courseId, moduleId, lessonId} = useParams();
   return(<div>
@@ -20,6 +22,9 @@ const LessonTabs = (
             </li>
         )
       }
+      <li className="nav-item">
+        <i onClick={() => createLesson(lessonId)} className="fas fa-plus fa-2x"></i>
+      </li>
     </ul>
   </div>)}
 
