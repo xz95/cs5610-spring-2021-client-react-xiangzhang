@@ -9,6 +9,7 @@ const LessonTabs = (
     {
       lessons=[],
       createLesson,
+      deleteLesson,
       findLessonsForModule
 
     }) => {
@@ -25,6 +26,7 @@ const LessonTabs = (
             <li className="nav-item">
               <EditableItem
                   to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}
+                  deleteItem={deleteLesson}
                   item={lesson}/>
             </li>
         )
@@ -44,7 +46,10 @@ const dtpm = (dispatch) => ({
     .then(lesson => dispatch({type: "CREATE_LESSON", lesson: lesson}))
 
   },
-
+  deleteLesson: (lessonToDelete) => {
+    lessonService.deleteLesson(lessonToDelete._id)
+    .then(status => dispatch({type: "DELETE_LESSON", lessonToDelete: lessonToDelete}))
+  },
 
 
   findLessonsForModule: (moduleId) => {
