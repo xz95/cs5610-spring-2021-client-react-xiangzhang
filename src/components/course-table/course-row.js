@@ -21,7 +21,7 @@ const CourseRow = ({course, owner, lastModified, deleteCourse,
 
           {
             !editing &&
-            <Link to="/editor">
+            <Link to={`/courses/table/edit/${course._id}`}>
               <i className="fas fa-file">&nbsp; </i>
               {course.title}
             </Link>
