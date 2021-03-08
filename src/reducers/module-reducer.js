@@ -22,6 +22,7 @@ const moduleReducer = (state = initialState, action) => {
           action.module
         ]
       }
+
     case "DELETE_MODULE":
       return {
         ...state,

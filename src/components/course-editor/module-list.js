@@ -24,6 +24,7 @@ const ModuleList = (
       <li>layout: {layout}</li>
       <li>courseId: {courseId}</li>
       <li>moduleId: {moduleId}</li>
+
     </ul>
 
 
