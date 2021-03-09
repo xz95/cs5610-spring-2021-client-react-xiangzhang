@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from "react-redux";
 import EditableItem from "../editable-item";
 import {useParams} from "react-router-dom";
+import topicService from "../../services/topic-service";
 
 const TopicPills = (
     {
@@ -13,6 +14,10 @@ const TopicPills = (
 
     }) => {
   const {layout, courseId, moduleId, lessonId, topicId} = useParams();
+  useEffect(() => {
+    // console.log(courseId)
+    findTopicsForLesson(lessonId)
+  }, [])
   return(<div>
     <h2>Topic Tabs</h2>
     <ul>
@@ -51,7 +56,26 @@ const stpm = (state) => ({
   topics: state.topicReducer.topics
 })
 const dtpm = (dispatch) => ({
-  ewq: () => {}
+  createTopic: (lessonId) => {
+    topicService.createTopic(lessonId, {title: 'New Topic'})
+    .then(topic => dispatch({type: "CREATE_TOPIC", topic: topic}))
+
+  },
+  deleteTopic: (topicToDelete) => {
+    topicService.deleteTopic(topicToDelete._id)
+    .then(status => dispatch({type: "DELETE_TOPIC", topicToDelete: topicToDelete}))
+  },
+  updateTopic: (newItem) => {
+    topicService.updateTopic(newItem._id, newItem)
+    .then(status => dispatch({type: "UPDATE_TOPIC", updateTopic: newItem}))
+  },
+  findTopicsForLesson: (lessonId) => {
+    topicService.findTopicsForLesson(lessonId)
+    .then(topics => dispatch({
+      type: "FIND_TOPICS_FOR_LESSON",
+      topics: topics
+    }))
+  }
 })
 
 const pm = connect(stpm, dtpm)
