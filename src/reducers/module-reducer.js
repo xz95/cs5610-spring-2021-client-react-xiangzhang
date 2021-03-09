@@ -1,8 +1,8 @@
 const initialState = {
   modules: [
-    {title: 'CS5610', _id: '123'},
-    {title: 'CS3200', _id: '234'},
-    {title: 'CS5200', _id: '345'},
+    // {title: 'CS5610', _id: '123'},
+    // {title: 'CS3200', _id: '234'},
+    // {title: 'CS5200', _id: '345'},
   ],
   asdf: 111,
   dfgdfgdfg: 345345

@@ -3,29 +3,40 @@ import {connect} from "react-redux";
 import EditableItem from "../editable-item";
 import {useParams} from "react-router-dom";
 import lessonService from "../../services/lesson-service";
-import moduleService from "../../services/module-service";
+
+
 
 const LessonTabs = (
     {
       lessons=[],
       createLesson,
       deleteLesson,
+      updateLesson,
       findLessonsForModule
 
     }) => {
   const {layout, courseId, moduleId, lessonId} = useParams();
+
   useEffect(() => {
     // console.log(courseId)
     findLessonsForModule(moduleId)
   }, [])
+
   return(<div>
     <h2>Lesson Tabs</h2>
+    <ul>
+      <li>layout: {layout}</li>
+      <li>courseId: {courseId}</li>
+      <li>moduleId: {moduleId}</li>
+      <li>lessonId: {lessonId}</li>
+    </ul>
     <ul className="nav nav-tabs">
       {
         lessons.map(lesson =>
             <li className="nav-item">
               <EditableItem
                   to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}
+                  updateItem={updateLesson}
                   deleteItem={deleteLesson}
                   item={lesson}/>
             </li>
@@ -50,7 +61,10 @@ const dtpm = (dispatch) => ({
     lessonService.deleteLesson(lessonToDelete._id)
     .then(status => dispatch({type: "DELETE_LESSON", lessonToDelete: lessonToDelete}))
   },
-
+  updateLesson: (newItem) => {
+    lessonService.updateLesson(newItem._id, newItem)
+    .then(status => dispatch({type: "UPDATE_LESSON", updateLesson: newItem}))
+  },
 
   findLessonsForModule: (moduleId) => {
     lessonService.findLessonsForModule(moduleId)
@@ -62,6 +76,8 @@ const dtpm = (dispatch) => ({
 
 })
 
-const pm = connect(stpm, dtpm)
+// const pm = connect(stpm, dtpm)
+//
+// export default pm(LessonTabs)
 
-export default pm(LessonTabs)
+export default connect(stpm, dtpm)(LessonTabs)

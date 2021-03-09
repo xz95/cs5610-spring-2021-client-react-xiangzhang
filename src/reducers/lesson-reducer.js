@@ -1,8 +1,8 @@
 const initialState = {
   lessons: [
-    {title: 'Lesson 1', _id: '123'},
-    {title: 'Lesson 2', _id: '234'},
-    {title: 'Lesson 3', _id: '345'},
+    // {title: 'Lesson 1', _id: '123'},
+    // {title: 'Lesson 2', _id: '234'},
+    // {title: 'Lesson 3', _id: '345'},
   ],
   asdf: 111,
   dfgdfgdfg: 345345
@@ -30,7 +30,19 @@ const lessonReducer = (state = initialState, action) => {
           }
         })
       }
+
     case "UPDATE_LESSON":
+      return {
+        ...state,
+        lessons: state.lessons.filter(lesson => {
+          if(lesson._id === action.updateLesson._id) {
+            return action.updateLesson
+          } else {
+            return lesson
+          }
+        })
+      }
+
     case "FIND_LESSONS_FOR_MODULE":
       return {
         ...state,

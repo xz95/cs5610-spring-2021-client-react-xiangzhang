@@ -6,20 +6,39 @@ import {useParams} from "react-router-dom";
 const TopicPills = (
     {
       topics=[],
-      createTopic
+      createTopic,
+      updateTopic,
+      deleteTopic,
+      findTopicsForLesson
 
     }) => {
   const {layout, courseId, moduleId, lessonId, topicId} = useParams();
   return(<div>
     <h2>Topic Tabs</h2>
-    <ul className="nav nav-tabs">
+    <ul>
+      <li>layout: {layout}</li>
+      <li>courseId: {courseId}</li>
+      <li>moduleId: {moduleId}</li>
+      <li>lessonId: {lessonId}</li>
+      <li>topicId: {topicId}</li>
+    </ul>
+    <ul className="nav nav-pills">
       {
         topics.map(topic =>
-            <li className="nav-item">
-              <EditableItem
-                  to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
-                  item={topic}/>
-            </li>
+            // <li className="nav-item">
+            //
+            //     <EditableItem
+            //         to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
+            //         item={topic}/>
+            //
+            // </li>
+          <li className="nav-item">
+            <EditableItem
+              to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
+              updateItem={updateTopic}
+              deleteItem={deleteTopic}
+              item={topic}/>
+          </li>
         )
       }
       <li className="nav-item">
