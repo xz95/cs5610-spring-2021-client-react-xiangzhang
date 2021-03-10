@@ -21,6 +21,8 @@ const CourseRow = ({course, owner, lastModified, deleteCourse,
 
           {
             !editing &&
+
+            // <Link to={{ pathname: `/courses/table/edit/${course._id}`, state: { courseName: course.title} }}>
             <Link to={`/courses/table/edit/${course._id}`}>
               <i className="fas fa-file">&nbsp; </i>
               {course.title}

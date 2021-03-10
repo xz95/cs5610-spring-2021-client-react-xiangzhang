@@ -4,8 +4,7 @@ const initialState = {
     // {title: 'CS3200', _id: '234'},
     // {title: 'CS5200', _id: '345'},
   ],
-  asdf: 111,
-  dfgdfgdfg: 345345
+  course: []
 }
 
 const moduleReducer = (state = initialState, action) => {

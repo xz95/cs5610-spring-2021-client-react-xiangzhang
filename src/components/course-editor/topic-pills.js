@@ -16,17 +16,22 @@ const TopicPills = (
   const {layout, courseId, moduleId, lessonId, topicId} = useParams();
   useEffect(() => {
     // console.log(courseId)
+    // if(lessonId !== "undefined" && typeof lessonId !== "undefined") {
+    //   findTopicsForLesson(lessonId)
+    // }
     findTopicsForLesson(lessonId)
-  }, [])
+
+  }, [lessonId])
   return(<div>
-    <h2>Topic Tabs</h2>
-    <ul>
-      <li>layout: {layout}</li>
-      <li>courseId: {courseId}</li>
-      <li>moduleId: {moduleId}</li>
-      <li>lessonId: {lessonId}</li>
-      <li>topicId: {topicId}</li>
-    </ul>
+    <h2>Topic Pills</h2>
+    <br/>
+    {/*<ul>*/}
+    {/*  <li>layout: {layout}</li>*/}
+    {/*  <li>courseId: {courseId}</li>*/}
+    {/*  <li>moduleId: {moduleId}</li>*/}
+    {/*  <li>lessonId: {lessonId}</li>*/}
+    {/*  <li>topicId: {topicId}</li>*/}
+    {/*</ul>*/}
     <ul className="nav nav-pills">
       {
         topics.map(topic =>
@@ -47,7 +52,7 @@ const TopicPills = (
         )
       }
       <li className="nav-item">
-        <i onClick={() => createTopic(topicId)} className="fas fa-plus fa-2x"></i>
+        <i onClick={() => createTopic(lessonId)} className="fas fa-plus fa-2x"></i>
       </li>
     </ul>
   </div>)}

@@ -1,7 +1,7 @@
 import React from 'react'
 import CourseCard from "./course-card";
 import {Link} from "react-router-dom";
-import CourseRow from "../course-table/course-row";
+
 
 const CourseGrid = ({courses, deleteCourse, updateCourse}) =>
 
@@ -15,6 +15,7 @@ const CourseGrid = ({courses, deleteCourse, updateCourse}) =>
         {
           courses.map(course =>
               <CourseCard
+                  key={course._id}
                   course={course}
                   itle={course.title}
                   owner={course.owner}

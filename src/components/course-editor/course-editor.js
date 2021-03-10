@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react';
 import {Link, useParams, useHistory} from "react-router-dom";
 import moduleReducer from "../../reducers/module-reducer";
 import lessonReducer from "../../reducers/lesson-reducer";
@@ -8,6 +8,7 @@ import {Provider} from "react-redux";
 import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
+import courseService from '../../services/course-service';
 
 const reducer = combineReducers({
   // key value pairs
@@ -18,18 +19,28 @@ const reducer = combineReducers({
 
 const store = createStore(reducer)
 
+
 const CourseEditor = ({history, params}) => {
-  const {layout, courseId, moduleId, lessonId} = useParams();
+  const {layout, courseId, moduleId, lessonId, topicId} = useParams();
+  const [courseName, setCourseName] = useState('')
+  useEffect(() => {
+    courseService.findCourseById(courseId).then((res) => {
+      setCourseName(res.title);
+    })
+  }, [courseId])
   return(
       <Provider store={store}>
         <h1>
-          <Link to="/courses/table">
-            <i className="fas fa-arrow-left"></i>
+          <Link to={`/courses/${layout}`}>
+            <i className="fas fa-times"> &nbsp;</i>
+            {/*<i className="fas fa-times float-right"*/}
+            {/*   onClick={() => history.goBack()}>  &nbsp;</i>*/}
           </Link>
-          Course Editor
-          <i className="fas fa-times float-right"
-             onClick={() => history.goBack()}></i>
+          Editor for {courseName}
+          {/*<i className="fas fa-times float-right"*/}
+          {/*   onClick={() => history.goBack()}></i>*/}
         </h1>
+        <br></br>
         <div className="row">
           <div className="col-3">
             <ModuleList/>

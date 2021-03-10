@@ -4,9 +4,11 @@ import {Link} from "react-router-dom";
 const EditableItem = (
     {
       to,
-      item,
+      // item,
+      item={title: "Some Title", _id:"ABC"},
       updateItem,
-      deleteItem
+      deleteItem,
+      active
     }) => {
   const [editing, setEditing] = useState(false)
   const [itemCache, setItemCache] = useState(item)
@@ -15,10 +17,15 @@ const EditableItem = (
         {
           !editing &&
           <>
-            <Link to={to}>
-              {item.title} &nbsp;
+            {/*<Link to={to}>*/}
+            {/*  {item.title} &nbsp;*/}
+            {/*</Link>*/}
+            <Link className={`nav-link ${active?'active':''}`} to={to}>
+              {item.title}&nbsp;
+
+            <i onClick={() => setEditing(true)}
+               className="fas fa-edit float-right"></i>
             </Link>
-            <i onClick={() => setEditing(true)} className="fas fa-edit float-right"> &nbsp;</i>
           </>
         }
         {

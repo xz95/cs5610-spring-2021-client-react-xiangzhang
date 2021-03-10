@@ -18,26 +18,33 @@ const LessonTabs = (
   const {layout, courseId, moduleId, lessonId} = useParams();
 
   useEffect(() => {
-    // console.log(courseId)
-    findLessonsForModule(moduleId)
-  }, [])
+    if(moduleId !== "undefined" && typeof moduleId !== "undefined") {
+      findLessonsForModule(moduleId)
+    }
+
+  }, [moduleId])
 
   return(<div>
     <h2>Lesson Tabs</h2>
-    <ul>
-      <li>layout: {layout}</li>
-      <li>courseId: {courseId}</li>
-      <li>moduleId: {moduleId}</li>
-      <li>lessonId: {lessonId}</li>
-    </ul>
+    <br/>
+    {/*<ul>*/}
+    {/*  <li>layout: {layout}</li>*/}
+    {/*  <li>courseId: {courseId}</li>*/}
+    {/*  <li>moduleId: {moduleId}</li>*/}
+    {/*  <li>lessonId: {lessonId}</li>*/}
+    {/*</ul>*/}
     <ul className="nav nav-tabs">
       {
         lessons.map(lesson =>
             <li className="nav-item">
+              {/*<li className={`nav-item ${lesson._id === lessonId ? 'active' : ''}`}>*/}
               <EditableItem
+                  active={lesson._id === lessonId}
                   to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}
+                  // to={`/courses/editor/${courseId}/${moduleId}/${lesson._id}`}
                   updateItem={updateLesson}
                   deleteItem={deleteLesson}
+
                   item={lesson}/>
             </li>
         )

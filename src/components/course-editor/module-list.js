@@ -17,27 +17,32 @@ const ModuleList = (
 
   useEffect(() => {
     // console.log(courseId)
-    findModulesForCourse(courseId)
-  }, [])
+    if(courseId !== "undefined" && typeof courseId !== "undefined") {
+      findModulesForCourse(courseId)
+    }
+
+  }, [courseId])
 
   return(<div>
     <h2>Module List</h2>
-    <ul>
-      <li>layout: {layout}</li>
-      <li>courseId: {courseId}</li>
-      <li>moduleId: {moduleId}</li>
+    <br/>
+    {/*<ul>*/}
+    {/*  <li>layout: {layout}</li>*/}
+    {/*  <li>courseId: {courseId}</li>*/}
+    {/*  <li>moduleId: {moduleId}</li>*/}
 
-    </ul>
+    {/*</ul>*/}
 
 
     <ul className="list-group">
       {
         modules.map(module =>
-            <li className="list-group-item">
+            <li className={`list-group-item ${module._id === moduleId ? 'active' : ''}`}>
               <EditableItem
                   to={`/courses/${layout}/edit/${courseId}/modules/${module._id}`}
                   deleteItem={deleteModule}
                   updateItem={updateModule}
+                  active={true}
                   item={module}/>
             </li>
         )

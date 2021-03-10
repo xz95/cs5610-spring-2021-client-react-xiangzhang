@@ -64,6 +64,7 @@ export default class CourseTable extends React.Component {
             {
               this.props.courses.map(course =>
                 <CourseRow
+                  key={course._id}
                   course={course}
                   title={course.title}
                   owner={course.owner}
