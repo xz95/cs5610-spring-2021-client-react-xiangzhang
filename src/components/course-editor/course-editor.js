@@ -9,6 +9,8 @@ import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
 import courseService from '../../services/course-service';
+import WidgetList from "./course-editor/widgets/widget-list";
+import TopicPills from "./course-editor/topic-pills";
 
 const reducer = combineReducers({
   // key value pairs
@@ -36,7 +38,9 @@ const CourseEditor = ({history, params}) => {
             {/*<i className="fas fa-times float-right"*/}
             {/*   onClick={() => history.goBack()}>  &nbsp;</i>*/}
           </Link>
-          Editor for {courseName}
+          Editor for {courseName};
+
+          <span>{courseId + courseId}</span>
           {/*<i className="fas fa-times float-right"*/}
           {/*   onClick={() => history.goBack()}></i>*/}
         </h1>
@@ -47,7 +51,10 @@ const CourseEditor = ({history, params}) => {
           </div>
           <div className="col-9">
             <LessonTabs/>
+            <br/>
             <TopicPills/>
+            <br/>
+            <WidgetList/>
           </div>
         </div>
       </Provider>)

@@ -11,7 +11,8 @@ const ModuleList = (
       createModule,
       updateModule,
       deleteModule,
-      findModulesForCourse
+      findModulesForCourse,
+
     }) => {
   const {layout, courseId, moduleId} = useParams();
 
@@ -32,6 +33,7 @@ const ModuleList = (
     {/*  <li>moduleId: {moduleId}</li>*/}
 
     {/*</ul>*/}
+
 
 
     <ul className="list-group">

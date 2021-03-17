@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import {connect} from "react-redux";
 import EditableItem from "../editable-item";
 import {useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 import topicService from "../../services/topic-service";
 
 const TopicPills = (
@@ -49,8 +50,20 @@ const TopicPills = (
               deleteItem={deleteTopic}
               item={topic}/>
           </li>
+
+
         )
       }
+      <li className="nav-item">
+        <Link to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC123`}>
+          ABC123
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC234`}>
+          ABC234
+        </Link>
+      </li>
       <li className="nav-item">
         <i onClick={() => createTopic(lessonId)} className="fas fa-plus fa-2x"></i>
       </li>
