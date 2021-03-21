@@ -23,6 +23,7 @@ const TopicPills = (
     findTopicsForLesson(lessonId)
 
   }, [lessonId])
+
   return(<div>
     <h2>Topic Pills</h2>
     <br/>

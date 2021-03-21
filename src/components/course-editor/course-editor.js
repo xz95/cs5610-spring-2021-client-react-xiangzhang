@@ -9,8 +9,8 @@ import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
 import courseService from '../../services/course-service';
-import WidgetList from "./course-editor/widgets/widget-list";
-import TopicPills from "./course-editor/topic-pills";
+import WidgetList from "../widgets/widget-list"
+
 
 const reducer = combineReducers({
   // key value pairs
