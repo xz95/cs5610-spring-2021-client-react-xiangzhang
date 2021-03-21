@@ -36,7 +36,7 @@ const LessonTabs = (
     <ul className="nav nav-tabs">
       {
         lessons.map(lesson =>
-            <li className="nav-item">
+            <li key={lesson.id} className="nav-item">
               {/*<li className={`nav-item ${lesson._id === lessonId ? 'active' : ''}`}>*/}
               <EditableItem
                   active={lesson._id === lessonId}

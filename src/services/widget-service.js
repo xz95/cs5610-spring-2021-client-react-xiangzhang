@@ -1,10 +1,10 @@
-const WIDGETS_URL = "/api/widgets"
-const TOPIC_URL = "/api/topics"
+const WIDGETS_URL = "http://localhost:8080/api/widgets"
+const TOPIC_URL = "http://localhost:8080/api/topics"
 
-export const createWidget = (topicId, widget) =>
+export const createWidget = (topicId) =>
     fetch(`${TOPIC_URL}/${topicId}/widgets`, {
       method: "POST",
-      body: JSON.stringify(widget),
+      body: JSON.stringify({type: "HEADING", size: 2, text: "New Widget"}),
       headers: {
         'content-type': 'application/json'
       }

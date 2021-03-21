@@ -15,6 +15,7 @@ const TopicPills = (
 
     }) => {
   const {layout, courseId, moduleId, lessonId, topicId} = useParams();
+
   useEffect(() => {
     // console.log(courseId)
     // if(lessonId !== "undefined" && typeof lessonId !== "undefined") {
@@ -44,7 +45,7 @@ const TopicPills = (
             //         item={topic}/>
             //
             // </li>
-          <li className="nav-item">
+          <li key={topic.id} className="nav-item">
             <EditableItem
               to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
               updateItem={updateTopic}
