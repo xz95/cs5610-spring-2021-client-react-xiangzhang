@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import {connect, Provider} from "react-redux";
 import EditableItem from "../editable-item";
 import {useParams} from "react-router-dom";
-// import {findModulesForCourse, createModule} from "../services/module-service";
 import moduleService from "../../services/module-service";
 
 const ModuleList = (
@@ -17,25 +16,14 @@ const ModuleList = (
   const {layout, courseId, moduleId} = useParams();
 
   useEffect(() => {
-    // console.log(courseId)
     if(courseId !== "undefined" && typeof courseId !== "undefined") {
       findModulesForCourse(courseId)
     }
-
   }, [courseId])
 
   return(<div>
     <h2>Module List</h2>
     <br/>
-    {/*<ul>*/}
-    {/*  <li>layout: {layout}</li>*/}
-    {/*  <li>courseId: {courseId}</li>*/}
-    {/*  <li>moduleId: {moduleId}</li>*/}
-
-    {/*</ul>*/}
-
-
-
     <ul className="list-group">
       {
         modules.map(module =>

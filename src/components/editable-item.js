@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 const EditableItem = (
     {
       to,
-      // item,
       item={title: "Some Title", _id:"ABC"},
       updateItem,
       deleteItem,
@@ -17,9 +16,6 @@ const EditableItem = (
         {
           !editing &&
           <>
-            {/*<Link to={to}>*/}
-            {/*  {item.title} &nbsp;*/}
-            {/*</Link>*/}
             <Link className={`nav-link ${active?'active':''}`} to={to}>
               {item.title}&nbsp;
 
@@ -31,7 +27,6 @@ const EditableItem = (
         {
           editing &&
           <>
-
               <input
                   onChange={(e) => setItemCache({...itemCache, title: e.target.value})}
                   value={itemCache.title}/>

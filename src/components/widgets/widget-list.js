@@ -29,7 +29,6 @@ const WidgetList = (
     // .then(response => response.json())
     // .then(widgets => setWidgets(widgets))
     findWidgetsForTopic(topicId)
-
   }, [topicId])
 
   // const createWidget = () => {
@@ -74,19 +73,6 @@ const WidgetList = (
           {
             widgets.map(_widget =>
                 <li key={_widget.id} className="list-group-item">
-                  {/*{*/}
-                  {/*  _widget.id === widget.id &&*/}
-                  {/*  <>*/}
-                  {/*    <i onClick={() => deleteWidget(_widget.id)} className="fas fa-trash float-right"></i>*/}
-                  {/*    <i onClick={() => {*/}
-                  {/*      updateWidget(_widget.id, widget)*/}
-                  {/*    }} className="fas fa-check float-right"></i>*/}
-                  {/*  </>*/}
-                  {/*}*/}
-                  {/*{*/}
-                  {/*  _widget.id !== widget.id &&*/}
-                  {/*  <i onClick={() => setWidget(_widget)} className="fas fa-cog float-right"></i>*/}
-                  {/*}*/}
                   {
                     _widget.type === "HEADING" &&
                     <HeadingWidget
@@ -100,19 +86,12 @@ const WidgetList = (
                   }
                   {
                     _widget.type === "PARAGRAPH" &&
-                    // <ParagraphWidget
-                    //     setWidget={setWidget}
-                    //     editing={_widget.id === widget.id}
-                    //     widget={_widget}/>
                     <ParagraphWidget
-                        // setWidget={setWidget}
-                        // editing={_widget.id === widget.id}
                         to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${_widget.id}`}
                         item={_widget}
                         updateWidget={updateWidget}
                         deleteWidget={deleteWidget}
                     />
-
                   }
                 </li>
             )
@@ -147,8 +126,6 @@ const dtpm = (dispatch) => ({
     }))
   }
 })
-
-// export default WidgetList
 
 const pm = connect(stpm, dtpm)
 

@@ -9,14 +9,10 @@ const ParagraphWidget = (
       updateWidget,
       deleteWidget,
     }) => {
-  const [widget, setWidget] = useState({item})
   const [editing, setEditing] = useState(false)
   const [widgetCache, setWidgetCache] = useState({})
   function test(e) {
     setWidgetCache(item => ({...item, type: e.target.value}));
-    //setWidget(widgetCache)
-    // updateWidget(widgetCache)
-    // setEditing(true)
   }
   return (
       <div>
@@ -37,10 +33,6 @@ const ParagraphWidget = (
         {
           editing &&
               <>
-              {/*<select onChange={(e) => {*/}
-              {/*  setWidgetCache(item => ({...item, type: e.target.value}));*/}
-              {/*  updateWidget(widgetCache)*/}
-              {/*}} className="form-control">*/}
                 <select value={widgetCache.type}
                         onChange={test}
                         onClick={() => {
@@ -56,6 +48,7 @@ const ParagraphWidget = (
                   <option value={"HEADING"}>Link</option>
                   <option value={"HEADING"}>List</option>
                 </select>
+                <br/>
                 <textarea
                     onChange={(e) =>
                         setWidgetCache({...item, text: e.target.value})}
@@ -63,22 +56,15 @@ const ParagraphWidget = (
                     className="form-control"></textarea>
                 <i onClick={() =>
                     deleteWidget(item)
-                  // alert(item.id + " deleting " + item.text)
                 } className="fas fa-trash float-right"></i>
                 <i onClick={() => {
                   updateWidget(widgetCache)
                   setEditing(false)
-                  // alert("editing")
                 }} className="fas fa-check float-right"></i>
               </>
-
-
         }
-
       </div>
   )
 }
-
-
 
 export default ParagraphWidget

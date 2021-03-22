@@ -38,13 +38,6 @@ const TopicPills = (
     <ul className="nav nav-pills">
       {
         topics.map(topic =>
-            // <li className="nav-item">
-            //
-            //     <EditableItem
-            //         to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
-            //         item={topic}/>
-            //
-            // </li>
           <li key={topic._id} className="nav-item">
             <EditableItem
               to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
@@ -52,8 +45,6 @@ const TopicPills = (
               deleteItem={deleteTopic}
               item={topic}/>
           </li>
-
-
         )
       }
       <li key="temp1" className="nav-item">
