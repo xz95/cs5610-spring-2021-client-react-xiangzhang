@@ -47,17 +47,17 @@ const TopicPills = (
           </li>
         )
       }
-      <li key="temp1" className="nav-item">
-        <Link to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC123`}>
-          ABC123
-        </Link>
-      </li>
-      <li key="temp2" className="nav-item">
-        <Link to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC234`}>
-          ABC234
-        </Link>
-      </li>
-      <li key="temp3" className="nav-item">
+      {/*<li key="temp1" className="nav-item">*/}
+      {/*  <Link to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC123`}>*/}
+      {/*    ABC123*/}
+      {/*  </Link>*/}
+      {/*</li>*/}
+      {/*<li key="temp2" className="nav-item">*/}
+      {/*  <Link to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC234`}>*/}
+      {/*    ABC234*/}
+      {/*  </Link>*/}
+      {/*</li>*/}
+      <li key="plus" className="nav-item">
         <i onClick={() => createTopic(lessonId)} className="fas fa-plus fa-2x"></i>
       </li>
     </ul>

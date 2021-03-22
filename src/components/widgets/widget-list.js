@@ -68,7 +68,7 @@ const WidgetList = (
   return(
       <div>
         <i onClick={() => createWidget(topicId)} className="fas fa-plus float-right fa-2x"></i>
-        <h1>Widget List </h1>
+        <h3>Widget List </h3>
         <ul className="list-group">
           {
             widgets.map(_widget =>
