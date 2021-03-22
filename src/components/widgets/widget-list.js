@@ -18,10 +18,10 @@ const WidgetList = (
       findWidgetsForTopic
     }
 ) => {
-  const {topicId} = useParams()
+  const {layout, courseId, moduleId, lessonId, topicId, widgetId} = useParams()
   // TODO: move all state handling to widgets-reducer.js
   //const [widgets, setWidgets] = useState([])
-   const [widget, setWidget] = useState({})
+  // const [widget, setWidget] = useState({})
 
   useEffect(() => {
     // TODO: move all server communication to widgets-service.js
@@ -92,6 +92,7 @@ const WidgetList = (
                     <HeadingWidget
                         // setWidget={setWidget}
                         // editing={_widget.id === widget.id}
+                        to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${_widget.id}`}
                         item={_widget}
                         updateWidget={updateWidget}
                         deleteWidget={deleteWidget}
@@ -103,7 +104,15 @@ const WidgetList = (
                     //     setWidget={setWidget}
                     //     editing={_widget.id === widget.id}
                     //     widget={_widget}/>
-                      <h4>Paragraph </h4>
+                    <ParagraphWidget
+                        // setWidget={setWidget}
+                        // editing={_widget.id === widget.id}
+                        to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${_widget.id}`}
+                        item={_widget}
+                        updateWidget={updateWidget}
+                        deleteWidget={deleteWidget}
+                    />
+
                   }
                 </li>
             )

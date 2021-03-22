@@ -45,7 +45,7 @@ const TopicPills = (
             //         item={topic}/>
             //
             // </li>
-          <li key={topic.id} className="nav-item">
+          <li key={topic._id} className="nav-item">
             <EditableItem
               to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
               updateItem={updateTopic}
@@ -56,17 +56,17 @@ const TopicPills = (
 
         )
       }
-      <li className="nav-item">
+      <li key="temp1" className="nav-item">
         <Link to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC123`}>
           ABC123
         </Link>
       </li>
-      <li className="nav-item">
+      <li key="temp2" className="nav-item">
         <Link to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC234`}>
           ABC234
         </Link>
       </li>
-      <li className="nav-item">
+      <li key="temp3" className="nav-item">
         <i onClick={() => createTopic(lessonId)} className="fas fa-plus fa-2x"></i>
       </li>
     </ul>

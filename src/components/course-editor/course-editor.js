@@ -40,9 +40,9 @@ const CourseEditor = ({history, params}) => {
             {/*<i className="fas fa-times float-right"*/}
             {/*   onClick={() => history.goBack()}>  &nbsp;</i>*/}
           </Link>
-          Editor for {courseName};
+          Editor for {courseName}
 
-          <span>{courseId + courseId}</span>
+          {/*<span>{courseId + courseId}</span>*/}
           {/*<i className="fas fa-times float-right"*/}
           {/*   onClick={() => history.goBack()}></i>*/}
         </h1>
