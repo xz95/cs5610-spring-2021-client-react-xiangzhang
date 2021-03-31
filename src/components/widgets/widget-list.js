@@ -9,6 +9,7 @@ import widgetService, {
 } from "../../services/widget-service";
 import topicService from "../../services/topic-service";
 import ListWidget from "./list-widget";
+import ImageWidget from "./image-widget";
 
 const WidgetList = (
     {
@@ -97,6 +98,15 @@ const WidgetList = (
                   {
                     _widget.type === "LIST" &&
                     <ListWidget
+                        to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${_widget.id}`}
+                        item={_widget}
+                        updateWidget={updateWidget}
+                        deleteWidget={deleteWidget}
+                    />
+                  }
+                  {
+                    _widget.type === "IMAGE" &&
+                    <ImageWidget
                         to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${_widget.id}`}
                         item={_widget}
                         updateWidget={updateWidget}
