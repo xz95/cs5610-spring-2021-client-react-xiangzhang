@@ -51,10 +51,10 @@ const HeadingWidget = (
 
                 <option value={"HEADING"}>Heading</option>
                 <option value={"PARAGRAPH"}>Paragraph</option>
-                <option value={"HEADING"}>Video</option>
-                <option value={"HEADING"}>Image</option>
-                <option value={"HEADING"}>Link</option>
-                <option value={"HEADING"}>List</option>
+                <option value={"VIDEO"}>Video</option>
+                <option value={"IMAGE"}>Image</option>
+                <option value={"LINK"}>Link</option>
+                <option value={"LIST"}>List</option>
               </select>
               <br/>
               <input onChange={(e) =>

@@ -8,6 +8,7 @@ import widgetService, {
   deleteWidget, findWidgetsForTopic, updateWidget
 } from "../../services/widget-service";
 import topicService from "../../services/topic-service";
+import ListWidget from "./list-widget";
 
 const WidgetList = (
     {
@@ -87,6 +88,15 @@ const WidgetList = (
                   {
                     _widget.type === "PARAGRAPH" &&
                     <ParagraphWidget
+                        to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${_widget.id}`}
+                        item={_widget}
+                        updateWidget={updateWidget}
+                        deleteWidget={deleteWidget}
+                    />
+                  }
+                  {
+                    _widget.type === "LIST" &&
+                    <ListWidget
                         to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}/widgets/${_widget.id}`}
                         item={_widget}
                         updateWidget={updateWidget}
