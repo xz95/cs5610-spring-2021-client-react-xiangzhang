@@ -44,6 +44,7 @@ export default class CourseTable extends React.Component {
                 </select>
               </th>
               <th>Last modified by me</th>
+              <th>Quizzes</th>
               <th>
                 <div className="float-right">
                   <i className="fas fa-folder"></i> &nbsp;
