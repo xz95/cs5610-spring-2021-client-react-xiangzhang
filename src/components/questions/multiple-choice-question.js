@@ -27,7 +27,7 @@ const MultipleChoiceQuestion = ({question}) => {
               return(
                   <>
                     {
-                      grade &&
+                      grade && (choice === yourAnswer || choice === question.correct) &&
                          <li className={`list-group-item
                                ${choice === question.correct ? 'list-group-item-success' : 'list-group-item-danger'}`}>
                            <label>
@@ -47,6 +47,17 @@ const MultipleChoiceQuestion = ({question}) => {
                              <i className="fas fa-times float-right"></i>
                            }
                          </li>
+                    }
+                    {
+                      grade && choice !== yourAnswer && choice !== question.correct &&
+                      <li className="list-group-item">
+                        <label>
+                          <input
+                              type="radio"
+                              name={question._id}/>
+                          &nbsp; {choice}
+                        </label>
+                      </li>
                     }
                     {
                       !grade &&

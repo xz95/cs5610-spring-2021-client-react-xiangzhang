@@ -3,6 +3,17 @@ import React, {useEffect, useState} from "react";
 const TrueFalseQuestion = ({question}) => {
   const [answer, setAnswer] = useState(null)
   const [grade, setGrade] = useState(false)
+  //
+  // function choiceType() {
+  //   if (answer === question.answer) {
+  //     return 'list-group-item-danger';
+  //   }
+  //   if (answer !== question.answer) {
+  //     return 'list-group-item-danger';
+  //   }
+  //   return ''
+  // }
+
 
   return (
       <div>
@@ -24,9 +35,10 @@ const TrueFalseQuestion = ({question}) => {
         <br/>
         {/*{JSON.stringify(answer)}*/}
         {
-          grade &&
+          grade && (true === answer || "true" === question.correct) &&
           <label className={`list-group-item
                               ${"true" === question.correct ? 'list-group-item-success' : 'list-group-item-danger'}`}>
+
             <input
                 type="radio"
                 checked={answer}
@@ -40,9 +52,15 @@ const TrueFalseQuestion = ({question}) => {
               <i className="fas fa-times float-right"></i>
             }
           </label>
-
-
         }
+        {
+          grade && true !== answer && "true" !== question.correct &&
+          <label className="list-group-item">
+            <input
+                type="radio"
+                name={question._id}/>&nbsp; True</label>
+        }
+
         {
           !grade &&
           <label className="list-group-item">
@@ -52,9 +70,10 @@ const TrueFalseQuestion = ({question}) => {
                 name={question._id}/>&nbsp; True</label>
         }
 
+
         {
-          grade &&
-          <label className={`list-group-item
+          grade && (false === answer || "false" === question.correct) &&
+          <label className={`list-group-item 
                             ${"false" === question.correct ? 'list-group-item-success' : 'list-group-item-danger'}`}>
             <input
                 type="radio"
@@ -70,6 +89,13 @@ const TrueFalseQuestion = ({question}) => {
             }
             </label>
 
+        }
+        {
+          grade && false !== answer && "false" !== question.correct &&
+          <label className="list-group-item">
+            <input
+                type="radio"
+                name={question._id}/>&nbsp; False</label>
         }
         {
           !grade &&

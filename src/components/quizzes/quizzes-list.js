@@ -30,8 +30,6 @@ const QuizzesList = () => {
                         Start
                       </button>
                     </Link>
-
-
                   </>
               )
             })
