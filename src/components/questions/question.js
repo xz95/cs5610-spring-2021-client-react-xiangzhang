@@ -4,7 +4,8 @@ import MultipleChoiceQuestion from "./multiple-choice-question";
 
 const Question = ({question}) => {
   return(
-      <div>
+      <div className="container-fluid">
+
         {
           question.type === "TRUE_FALSE" &&
           <TrueFalseQuestion

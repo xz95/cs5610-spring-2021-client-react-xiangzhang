@@ -1,33 +1,95 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const TrueFalseQuestion = ({question}) => {
   const [answer, setAnswer] = useState(null)
+  const [grade, setGrade] = useState(false)
+
   return (
       <div>
         <h4>
-          {question.question}
+          {question.question} &nbsp;
           {
-            answer == question.correct &&
-            <i className="fas fa-check"></i>
+            grade && JSON.stringify(answer) === question.correct &&
+            <i className="fas fa-check text-success"></i>
           }
           {
-            answer != question.correct &&
-            <i className="fas fa-times"></i>
+            grade && JSON.stringify(answer) !== question.correct &&
+            <i className="fas fa-times text-danger"></i>
           }
         </h4>
-        {question.correct}
+        {
+          grade &&
+                  <h5>correct answer: {question.correct}</h5>
+        }
         <br/>
-        {JSON.stringify(answer)}
+        {/*{JSON.stringify(answer)}*/}
+        {
+          grade &&
+          <label className={`list-group-item
+                              ${"true" === question.correct ? 'list-group-item-success' : 'list-group-item-danger'}`}>
+            <input
+                type="radio"
+                checked={answer}
+                name={question._id}/>&nbsp; True
+            {
+              "true" === question.correct &&
+              <i className="fas fa-check float-right"></i>
+            }
+            {
+              "false" === question.correct &&
+              <i className="fas fa-times float-right"></i>
+            }
+          </label>
+
+
+        }
+        {
+          !grade &&
+          <label className="list-group-item">
+            <input
+                type="radio"
+                onClick={() => setAnswer(true)}
+                name={question._id}/>&nbsp; True</label>
+        }
+
+        {
+          grade &&
+          <label className={`list-group-item
+                            ${"false" === question.correct ? 'list-group-item-success' : 'list-group-item-danger'}`}>
+            <input
+                type="radio"
+                checked={!answer}
+                name={question._id}/>&nbsp; False
+            {
+              "false" === question.correct &&
+              <i className="fas fa-check float-right"></i>
+            }
+            {
+              "true" === question.correct &&
+              <i className="fas fa-times float-right"></i>
+            }
+            </label>
+
+        }
+        {
+          !grade &&
+          <label className="list-group-item">
+            <input
+                type="radio"
+                onClick={() => setAnswer(false)}
+                name={question._id}/>&nbsp; False</label>
+        }
+
+        <p>
+          Your answer: {JSON.stringify(answer)}
+        </p>
+        <button
+            onClick={() => setGrade(true)}
+            className="btn-success">
+          Grade
+        </button>
+
         <br/>
-        <label><input
-            type="radio"
-            onClick={() => setAnswer(true)}
-            name={question._id}/>True</label>
-        <br/>
-        <label><input
-            type="radio"
-            onClick={() => setAnswer(false)}
-            name={question._id}/>False</label>
       </div>
   )
 }
