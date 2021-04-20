@@ -1,5 +1,6 @@
 const QUIZZES_URL = 'http://localhost:3000/api/quizzes';
 
+
 export const findAllQuizzes = () => {
   return fetch(QUIZZES_URL)
   .then(response => response.json())
@@ -9,18 +10,18 @@ export const findQuizById = (qid) => {
   .then(response => response.json())
 }
 
-export const submitQuiz = (qId, questions) => {
-  fetch(`http://localhost:3000/api/quizzes/${qId}/attempts`, {
+export const submitQuiz = (quizId, questions) => {
+  fetch(`http://localhost:3000/api/quizzes/${quizId}/attempts`, {
     method: 'POST',
     body: JSON.stringify(questions),
     headers: {
       'content-type': 'application/json'
     }
   }).then(response => response.json())
-  .then(result => console.log(result))
+  .then(result => alert("Your score is " + result.score + "!"))
 }
 
-const findAttempts = (qid) =>
+export const findAttempts = (qid) =>
     fetch(`http://localhost:3000/api/quizzes/${qid}/attempts`)
     .then(response => response.json())
 

@@ -29,14 +29,16 @@ const QuizzesList = () => {
                           to={`/courses/${courseId}/quizzes/${quiz._id}`}>
                         Start
                       </button>
+
                     </Link>
 
                     <Link
                         to={`/courses/${courseId}/quizzes/${quiz._id}/attempts`}>
-                      <button className="float-right btn-primary btn-danger">
+                      <button className="float-right btn-success">
                         Attempts
                       </button>
                     </Link>
+                    <br/>
                   </>
               )
             })

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {useParams} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import Question from "../questions/question";
 import questionService from "../../services/questions-service"
 import quizzesService from "../../services/quizzes-service"
@@ -18,8 +18,13 @@ const Quiz = () => {
 
   return (
       <div>
+        <Link to={`/courses/${courseId}/quizzes`}>
+          <i className="fas fa-times float-right fa-3x"></i>
+        </Link>
         <h2>Quiz {quizId}</h2>
+
         <br/>
+
         <ul className="list-group">
           {
             questions.map(question =>
@@ -38,13 +43,15 @@ const Quiz = () => {
         {/*  submit*/}
         {/*</button>*/}
         <br/>
+
         <button className="float-right btn btn-success"
                 disabled={`${enable ? 'disabled' : ''}`}
                 onClick={() => {
                   if (attempt.length === questions.length) {
+
                     setEnable(true)
-                    quizzesService.submitQuiz(quizId, attempt).then(
-                        result => setResult(result))
+                    quizzesService.submitQuiz(quizId,attempt)
+
 
                   } else {
                     alert("Please answer all questions before submit!")
@@ -52,12 +59,12 @@ const Quiz = () => {
 
                 }}>Get your score
         </button>
-        Score:
-        <br/>
-        {
-          enable &&
-          result.score
-        }
+        {/*Score:*/}
+        {/*<br/>*/}
+        {/*{*/}
+        {/*  enable &&*/}
+        {/*  JSON.stringify(quizzesService.score)*/}
+        {/*}*/}
       </div>
   );
 }

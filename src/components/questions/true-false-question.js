@@ -112,7 +112,7 @@ const TrueFalseQuestion = ({question,attempt,setAttempt}) => {
         <button
             onClick={() =>{
               setGrade(true)
-              setAttempt(old=>[...old,{...question, answer: answer}])
+              setAttempt(old => [...old, {...question, answer: answer}])
             }}
             className="btn-success">
           Grade
