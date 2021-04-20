@@ -47,6 +47,10 @@ function App() {
             <Quiz/>
           </Route>
 
+          {/*<Route path="/courses/:courseId/quizzes/:quizId/attempts" exact={true}>*/}
+          {/*  <AttemptsList/>*/}
+          {/*</Route>*/}
+
           {/*<Route path="/courses/:layout/edit/:courseId" exact={true} render={(props) => <CourseEditor {...props}/>}/>*/}
           <Route path={[
             "/courses/:layout/edit/:courseId",

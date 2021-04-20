@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-const TrueFalseQuestion = ({question}) => {
+const TrueFalseQuestion = ({question,attempt,setAttempt}) => {
   const [answer, setAnswer] = useState(null)
   const [grade, setGrade] = useState(false)
   //
@@ -110,7 +110,10 @@ const TrueFalseQuestion = ({question}) => {
           Your answer: {JSON.stringify(answer)}
         </p>
         <button
-            onClick={() => setGrade(true)}
+            onClick={() =>{
+              setGrade(true)
+              setAttempt(old=>[...old,{...question, answer: answer}])
+            }}
             className="btn-success">
           Grade
         </button>

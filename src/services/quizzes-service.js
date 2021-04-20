@@ -8,8 +8,24 @@ export const findQuizById = (qid) => {
   return fetch(`${QUIZZES_URL}/${qid}`)
   .then(response => response.json())
 }
+
+export const submitQuiz = (qId, questions) => {
+  fetch(`http://localhost:3000/api/quizzes/${qId}/attempts`, {
+    method: 'POST',
+    body: JSON.stringify(questions),
+    headers: {
+      'content-type': 'application/json'
+    }
+  }).then(response => response.json())
+  .then(result => console.log(result))
+}
+
+const findAttempts = (qid) =>
+    fetch(`http://localhost:3000/api/quizzes/${qid}/attempts`)
+    .then(response => response.json())
+
 const api = {
-  findAllQuizzes, findQuizById
+  findAllQuizzes, findQuizById, submitQuiz, findAttempts
 }
 
 export default api;

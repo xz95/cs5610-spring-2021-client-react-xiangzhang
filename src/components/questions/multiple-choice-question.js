@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const MultipleChoiceQuestion = ({question}) => {
+const MultipleChoiceQuestion = ({question,attempt,setAttempt}) => {
   const [yourAnswer, setYourAnswer] = useState("null")
   const [grade, setGrade] = useState(false)
   return(
@@ -82,7 +82,10 @@ const MultipleChoiceQuestion = ({question}) => {
           Your answer: {yourAnswer}
         </p>
         <button
-            onClick={() => setGrade(true)}
+            onClick={() => {
+              setGrade(true)
+              setAttempt(old=>[...old,{...question, answer: yourAnswer}])
+            }}
             className="btn-success">
           Grade
         </button>
